@@ -18,6 +18,7 @@ __pycache__
 *.swp
 Thumbs.db
 config.php
+config*
 html/css/custom/*
 html/images/custom/*
 html/plugins/*
