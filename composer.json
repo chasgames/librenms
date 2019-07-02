@@ -64,12 +64,14 @@
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0",
-        "squizlabs/php_codesniffer": "^2.9.1"
+        "squizlabs/php_codesniffer": "^2.9.1",
+        "staudenmeir/dusk-updater": "^1.0"
     },
     "suggest": {
         "ext-memcached": "Required if you utilize distributed polling",
         "ext-posix": "Allows for additional validation tests",
-        "ext-mysqlnd": "*"
+        "ext-mysqlnd": "*",
+        "ext-ldap": "*"
     },
     "autoload": {
         "exclude-from-classmap": [

@@ -5,6 +5,7 @@ path: blob/master/doc/
 **Please note the minimum supported PHP version is 7.1.3**
 
 ## Install Required Packages ##
+    apt install software-properties-common
     add-apt-repository universe
     apt update
     apt install curl composer fping git graphviz imagemagick mariadb-client mariadb-server mtr-tiny nginx-full nmap php7.2-cli php7.2-curl php7.2-fpm php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-snmp php7.2-xml php7.2-zip python-memcache python-mysqldb rrdtool snmp snmpd whois
@@ -14,10 +15,23 @@ path: blob/master/doc/
     useradd librenms -d /opt/librenms -M -r
     usermod -a -G librenms www-data
 
-#### Install LibreNMS
+#### Download LibreNMS
 
     cd /opt
-    composer create-project --no-dev --keep-vcs librenms/librenms librenms dev-master
+    git clone https://github.com/librenms/librenms.git
+    
+#### Set permissions
+
+    chown -R librenms:librenms /opt/librenms
+    chmod 770 /opt/librenms
+    setfacl -d -m g::rwx /opt/librenms/rrd /opt/librenms/logs /opt/librenms/bootstrap/cache/ /opt/librenms/storage/
+    setfacl -R -m g::rwx /opt/librenms/rrd /opt/librenms/logs /opt/librenms/bootstrap/cache/ /opt/librenms/storage/
+
+#### Install PHP dependencies
+
+    su - librenms
+    ./scripts/composer_wrapper.php install --no-dev
+    exit
 
 ## DB Server ##
 
